@@ -1,10 +1,11 @@
-import { Popular, Veggie } from "../../components";
+import { Popular, Veggie, Categories } from "../../components";
 
 import React from "react";
 
 const Home = (props) => {
   return (
     <>
+      <Categories />
       <Popular />
       <Veggie />
     </>

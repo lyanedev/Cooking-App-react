@@ -21,8 +21,8 @@ const useAxios = (url) => {
           throw new Error(data.statusText);
         }
 
-        localStorage.setItem("popular", JSON.stringify(data.recipes));
-        setData(data.recipes);
+        localStorage.setItem("popular", JSON.stringify(data));
+        setData(data);
 
         setIsError(null);
       } catch (err) {
