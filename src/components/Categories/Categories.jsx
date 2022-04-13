@@ -8,19 +8,19 @@ const Categories = (props) => {
   return (
     <>
       <CategoriesList>
-        <NavLink to={"/cuisine/Italien"}>
+        <NavLink to={"/cuisine/italien"}>
           <FaPizzaSlice />
           <h4>Italien</h4>
         </NavLink>
-        <NavLink to={"/cuisine/Americain"}>
+        <NavLink to={"/cuisine/americain"}>
           <FaHamburger />
           <h4>Americain</h4>
         </NavLink>
-        <NavLink to={"/cuisine/Thaï"}>
+        <NavLink to={"/cuisine/thaï"}>
           <GiNoodles />
           <h4>Thaï</h4>
         </NavLink>
-        <NavLink to={"/cuisine/Japonais"}>
+        <NavLink to={"/cuisine/japonais"}>
           <GiChopsticks />
           <h4>Japonais</h4>
         </NavLink>
