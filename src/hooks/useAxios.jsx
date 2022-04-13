@@ -9,20 +9,27 @@ const useAxios = (url) => {
 
   const getData = async () => {
     setIsLoading(true);
+    const check = localStorage.getItem("popular");
 
-    try {
-      const { data } = await axios.get(url);
+    if (check) {
+      setData(JSON.parse(check));
+    } else {
+      try {
+        const { data } = await axios.get(url);
 
-      if (!data) {
-        throw new Error(data.statusText);
+        if (!data) {
+          throw new Error(data.statusText);
+        }
+
+        localStorage.setItem("popular", JSON.stringify(data.recipes));
+        setData(data.recipes);
+
+        setIsError(null);
+      } catch (err) {
+        setIsError(`Oops, il y a eu un problème 😭 : ${err}`);
+      } finally {
+        setIsLoading(false);
       }
-
-      setData(data);
-      setIsError(null);
-    } catch (err) {
-      setIsError(`Oops, il y a eu un problème 😭 : ${err}`);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -30,7 +37,7 @@ const useAxios = (url) => {
     getData();
   }, [url]);
 
-  return { data, isLoading, isError };
+  return { data, setData, isLoading, isError };
 };
 
 export default useAxios;
