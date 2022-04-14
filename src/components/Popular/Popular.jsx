@@ -1,7 +1,12 @@
 import useAxios from "../../hooks/useAxios";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-import { PopularCard, Wrapper } from "./Popular.styled";
+import {
+  CardsContainer,
+  PopularCard,
+  PopularTitle,
+  Wrapper,
+} from "./Popular.styled";
 
 const Popular = (props) => {
   const url = `https://api.spoonacular.com/recipes/random?number=9&apiKey=${"a8bf54ab8d2d4289bc9eb584bbed625e"}`;
@@ -19,21 +24,26 @@ const Popular = (props) => {
 
   return (
     <>
-      <h1>Popular</h1>
-
       <Wrapper>
-        <h3>Popular</h3>
+        <PopularTitle>Popular</PopularTitle>
 
-        <Splide
-          options={{
-            perPage: 4,
-            pagination: false,
-            drag: "free",
-            gap: 5,
-          }}
-        >
-          {popular && popularList}
-        </Splide>
+        <CardsContainer>
+          <Splide
+            hasTrack={false}
+            options={{
+              type: "loop",
+              perPage: 4,
+              pagination: false,
+              pauseOnHover: false,
+              resetProgress: false,
+              //drag: "free",
+              gap: 20,
+              autoplay: true,
+            }}
+          >
+            <SplideTrack>{popular && popularList}</SplideTrack>
+          </Splide>
+        </CardsContainer>
       </Wrapper>
     </>
   );

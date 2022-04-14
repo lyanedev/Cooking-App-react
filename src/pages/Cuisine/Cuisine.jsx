@@ -20,13 +20,10 @@ const Cuisine = () => {
   };
 
   useEffect(() => {
-    //getCuisine("italien");
-    console.log(params);
-  }, []);
+    getCuisine(params.type);
+  }, [params.type]);
 
-  console.log(cuisine);
-
-  return <></>;
+  return <>toto</>;
 };
 
 export default Cuisine;
